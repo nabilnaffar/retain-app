@@ -5,7 +5,7 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { MainContainer, NotesContainer } from './containers';
-import { AppBar, NoteCardComponent } from './ui';
+import { AppBar, NoteCardComponent, NoteCreator, ColorPicker } from './ui';
 
 @NgModule({
     declarations: [
@@ -13,7 +13,9 @@ import { AppBar, NoteCardComponent } from './ui';
         MainContainer,
         NotesContainer,
         AppBar,
-        NoteCardComponent
+        NoteCardComponent,
+        NoteCreator,
+        ColorPicker
     ],
     imports: [
         BrowserModule,
