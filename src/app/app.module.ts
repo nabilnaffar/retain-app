@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { MainContainer, NotesContainer } from './containers';
 import { AppBar, NoteCardComponent, NoteCreator, ColorPicker } from './ui';
+import { ApiService } from './services'
 
 @NgModule({
     declarations: [
@@ -22,7 +23,7 @@ import { AppBar, NoteCardComponent, NoteCreator, ColorPicker } from './ui';
         FormsModule,
         HttpModule
     ],
-    providers: [],
+    providers: [ApiService],
     bootstrap: [AppComponent]
 })
 export class AppModule {}
