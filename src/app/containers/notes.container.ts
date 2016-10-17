@@ -1,5 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NotesService } from '../services';
+import {Store} from '../store';
+import 'rxjs/Rx';
 
 @Component({
     selector: 'notes-container',
@@ -9,17 +11,19 @@ import { NotesService } from '../services';
 export class NotesContainer implements OnDestroy, OnInit{
     public notes: any[] = [];
 
-    constructor(private notesService: NotesService){
+    constructor(private notesService: NotesService, private store: Store){
     }
 
     ngOnInit(){
         console.log('Component Initiated!');
-        this.notesService
-            .getNotes()
-            .subscribe(res => {
-                this.notes = res.data
 
-            });
+        //register to changes in the store
+        this.store.changes.pluck('notes')
+            .subscribe((notes:any) => this.notes = notes);
+
+        //fire get from BE
+        this.notesService.getNotes()
+            .subscribe();
     }
 
     ngOnDestroy(){
@@ -28,11 +32,11 @@ export class NotesContainer implements OnDestroy, OnInit{
 
     removeNote(note: any, index: number):void{
         this.notesService.completeNote(note)
-            .subscribe(res => this.notes.splice(index, 1))
+            .subscribe()
     }
 
     onCreateNote(newNote){
         this.notesService.createNote(newNote)
-            .subscribe(res => this.notes.push(res))
+            .subscribe()
     }
 }

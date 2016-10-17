@@ -4,11 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
+import {Store} from './store';
 import {routes} from './routes';
 import { AppComponent } from './app.component';
 import { MainContainer, NotesContainer, AboutContainer } from './containers';
 import { AppBar, NoteCardComponent, NoteCreator, ColorPicker } from './ui';
-import { ApiService, NotesService } from './services'
+import { ApiService, NotesService, StoreHelper} from './services'
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 
 @NgModule({
@@ -29,6 +30,8 @@ import {LocationStrategy, HashLocationStrategy} from '@angular/common';
         RouterModule.forRoot(routes)
     ],
     providers: [
+        StoreHelper,
+        Store,
         ApiService,
         NotesService,
         {provide: LocationStrategy, useClass: HashLocationStrategy}//use hash urls instead of html5 routing
