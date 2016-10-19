@@ -7,9 +7,9 @@ import { RouterModule } from '@angular/router';
 import {Store} from './store';
 import {routes} from './routes';
 import { AppComponent } from './app.component';
-import { MainContainer, NotesContainer, AboutContainer } from './containers';
+import { MainContainer, NotesContainer, AboutContainer, AuthContainer } from './containers';
 import { AppBar, NoteCardComponent, NoteCreator, ColorPicker } from './ui';
-import { ApiService, NotesService, StoreHelper} from './services'
+import { ApiService, NotesService, StoreHelper, AuthService} from './services'
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 
 @NgModule({
@@ -18,6 +18,7 @@ import {LocationStrategy, HashLocationStrategy} from '@angular/common';
         MainContainer,
         NotesContainer,
         AboutContainer,
+        AuthContainer,
         AppBar,
         NoteCardComponent,
         NoteCreator,
@@ -33,6 +34,7 @@ import {LocationStrategy, HashLocationStrategy} from '@angular/common';
         StoreHelper,
         Store,
         ApiService,
+        AuthService,
         NotesService,
         {provide: LocationStrategy, useClass: HashLocationStrategy}//use hash urls instead of html5 routing
     ],
